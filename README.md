@@ -9,6 +9,8 @@ Available extensions
 --------------------
 
 * [DoctrineExtension](http://readthedocs.org/projects/silex-doctrine-extensions/), a set of services that provide Doctrine2 DBAL and ORM functionalities
+* DoctrineMongoDBExtension, a set of services that provide Doctrine2 MongoDB ODM functionality
+
 * That's all ... for the moment
 
 _huge set, isn't it ?_
