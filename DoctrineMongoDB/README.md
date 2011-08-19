@@ -17,6 +17,7 @@ usage:
     require_once __DIR__.'/silex_doctrine_mongodb_extension.phar';
 
     use Silex\Extension\DoctrineMongoDBExtension;
+    use Doctrine\Common\Annotations\AnnotationRegistry;
 
     $app = new Silex\Application;
     
@@ -34,6 +35,8 @@ usage:
         'doctrine.mongodb.class_path'     => __DIR__.'/vendor/doctrine-mongodb/lib',
         'doctrine.odm.mongodb.class_path' => __DIR__.'/vendor/doctrine-mongodb-odm/lib',
     ));
+    
+AnnotationRegistry::registerFile(__DIR__.'/../vendor/doctrine-mongodb-odm/lib/Doctrine/ODM/MongoDB/Mapping/Annotations/DoctrineAnnotations.php');
 
 
 ```
