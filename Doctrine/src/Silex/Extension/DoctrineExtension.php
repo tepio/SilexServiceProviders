@@ -23,6 +23,8 @@ use Doctrine\ORM\Mapping\Driver\YamlDriver;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Cache\ApcCache;
 use Doctrine\Common\Cache\ArrayCache;
+use Doctrine\Common\Cache\MemcacheCache;
+use Doctrine\Common\Cache\XcacheCache;
 use Doctrine\Common\EventManager;
 
 use Silex\Application;
@@ -106,10 +108,25 @@ class DoctrineExtension implements ExtensionInterface
         $app['doctrine.configuration'] = $app->share(function() use($app) {
 
             if (isset($app['doctrine.orm']) and true === $app['doctrine.orm']) {
+                // Check available cache drivers
+                if (extension_loaded('apc')) {
+                    $cache = new ApcCache;
+                } else if (extension_loaded('xcache')) {
+                    $cache = new XcacheCache;
+                } else if (extension_loaded('memcache')) {
+                    $memcache = new \Memcache();
+                    $memcache->connect('127.0.0.1');
+                    $cache = new MemcacheCache();
+                    $cache->setMemcache($memcache);
+                } else {
+                    $cache = new ArrayCache;
+                }
+                $cache->setNamespace("dc2_"); // to avoid collisions
+                
                 $config = new ORMConfiguration;
-                $cache = new ApcCache;
                 $config->setMetadataCacheImpl($cache);
                 $config->setQueryCacheImpl($cache);
+                $config->setResultCacheImpl($cache);
 
                 $chain = new DriverChain;
                 foreach((array)$app['doctrine.orm.entities'] as $entity) {
