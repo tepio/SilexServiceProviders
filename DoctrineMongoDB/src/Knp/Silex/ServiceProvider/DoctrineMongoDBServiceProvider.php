@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Silex\ServiceProvider;
+namespace Knp\Silex\ServiceProvider;
 
 use Silex\Application;
 use Silex\ServiceProviderInterface;
@@ -31,7 +31,7 @@ use Doctrine\ODM\MongoDB\Mapping\Driver\YamlDriver;
  *
  * @author Justin Hileman <justin@justinhileman.info>
  */
-class DoctrineMongoDBServiceProvider implements ExtensionInterface
+class DoctrineMongoDBServiceProvider implements ServiceProviderInterface
 {
     public function register(Application $app)
     {
@@ -103,12 +103,12 @@ class DoctrineMongoDBServiceProvider implements ExtensionInterface
                         break;
                     case 'yml':
                         $driver = new YamlDriver((array)$document['path']);
-                        $driver->setFileServiceProvider('.yml');
+                        $driver->setFileExtension('.yml');
                         $chain->addDriver($driver, $document['namespace']);
                         break;
                     case 'xml':
                         $driver = new XmlDriver((array)$document['path'], $document['namespace']);
-                        $driver->setFileServiceProvider('.xml');
+                        $driver->setFileExtension('.xml');
                         $chain->addDriver($driver, $document['namespace']);
                         break;
                     default:

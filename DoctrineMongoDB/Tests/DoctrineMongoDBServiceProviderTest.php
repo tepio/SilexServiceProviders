@@ -12,7 +12,7 @@
 namespace Silex\Tests;
 
 use Silex\Application;
-use Silex\ServiceProvider\DoctrineMongoDBExtension;
+use Knp\Silex\ServiceProvider\DoctrineMongoDBServiceProvider;
 
 
 /**
@@ -25,7 +25,7 @@ class DoctrineMongoDBServiceProviderTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         foreach (array('doctrine-common', 'doctrine-mongodb', 'doctrine-mongodb-odm') as $vendor) {
-            if (!is_dir(sprintf(__DIR__.'/../../../../vendor/%s/lib', $vendor))) {
+            if (!is_dir(sprintf(__DIR__.'/../../vendor/%s/lib', $vendor))) {
                 $this->markTestSkipped('Doctrine submodules were not installed.');
             }
         }
@@ -36,9 +36,9 @@ class DoctrineMongoDBServiceProviderTest extends \PHPUnit_Framework_TestCase
         $app = new Application();
 
         $app->register(new DoctrineMongoDBServiceProvider(), array(
-            'doctrine.common.class_path'      => __DIR__.'/../../../../vendor/doctrine-common/lib',
-            'doctrine.mongodb.class_path'     => __DIR__.'/../../../../vendor/doctrine-mongodb/lib',
-            'doctrine.odm.mongodb.class_path' => __DIR__.'/../../../../vendor/doctrine-mongodb-odm/lib',
+            'doctrine.common.class_path'      => __DIR__.'/../../vendor/doctrine-common/lib',
+            'doctrine.mongodb.class_path'     => __DIR__.'/../../vendor/doctrine-mongodb/lib',
+            'doctrine.odm.mongodb.class_path' => __DIR__.'/../../vendor/doctrine-mongodb-odm/lib',
             'doctrine.odm.mongodb.connection_options' => array(
                 'database' => 'mongodb_extension_test',
                 'host'     => 'localhost',

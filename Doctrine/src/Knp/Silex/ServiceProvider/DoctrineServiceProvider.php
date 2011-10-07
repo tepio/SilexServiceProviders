@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Silex\ServiceProvider;
+namespace Knp\Silex\ServiceProvider;
 
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Configuration as DBALConfiguration;
@@ -133,18 +133,17 @@ class DoctrineServiceProvider implements ServiceProviderInterface
                     switch($entity['type']) {
                         case 'annotation':
                             $reader = new AnnotationReader;
-                            $reader->setAnnotationNamespaceAlias('Doctrine\\ORM\\Mapping\\', 'orm');
                             $driver = new AnnotationDriver($reader, (array)$entity['path']);
                             $chain->addDriver($driver, $entity['namespace']);
                             break;
                         case 'yml':
                             $driver = new YamlDriver((array)$entity['path']);
-                            $driver->setFileServiceProvider('.yml');
+                            $driver->setFileExtension('.yml');
                             $chain->addDriver($driver, $entity['namespace']);
                             break;
                         case 'xml':
                             $driver = new XmlDriver((array)$entity['path'], $entity['namespace']);
-                            $driver->setFileServiceProvider('.xml');
+                            $driver->setFileExtension('.xml');
                             $chain->addDriver($driver, $entity['namespace']);
                             break;
                         default:

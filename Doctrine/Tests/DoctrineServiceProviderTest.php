@@ -12,7 +12,7 @@
 namespace Silex\Tests;
 
 use Silex\Application;
-use Silex\ServiceProvider\DoctrineServiceProvider;
+use Knp\Silex\ServiceProvider\DoctrineServiceProvider;
 
 
 /**
@@ -24,7 +24,7 @@ class DoctrineServiceProviderTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        if (!is_dir(__DIR__.'/../../../../vendor/doctrine/lib')) {
+        if (!is_dir(__DIR__.'/../../vendor/doctrine/lib')) {
             $this->markTestSkipped('Doctrine submodules were not installed.');
         }
     }
@@ -34,9 +34,9 @@ class DoctrineServiceProviderTest extends \PHPUnit_Framework_TestCase
         $app = new Application();
 
         $app->register(new DoctrineServiceProvider(), array(
-            'doctrine.common.class_path'    => __DIR__.'/../../../../vendor/doctrine-common/lib',
-            'doctrine.dbal.class_path'    => __DIR__.'/../../../../vendor/doctrine-dbal/lib',
-            'doctrine.orm.class_path'    => __DIR__.'/../../../../vendor/doctrine/lib',
+            'doctrine.common.class_path'    => __DIR__.'/../../vendor/doctrine-common/lib',
+            'doctrine.dbal.class_path'    => __DIR__.'/../../vendor/doctrine-dbal/lib',
+            'doctrine.orm.class_path'    => __DIR__.'/../../vendor/doctrine/lib',
             'doctrine.dbal.connection_options' => array(
                 'driver' => 'pdo_sqlite',
                 'path' => ':memory',
@@ -84,8 +84,8 @@ class DoctrineServiceProviderTest extends \PHPUnit_Framework_TestCase
         $app = new Application();
 
         $app->register(new DoctrineServiceProvider(), array(
-            'doctrine.common.class_path'    => __DIR__.'/../../../../vendor/doctrine-common/lib',
-            'doctrine.dbal.class_path'    => __DIR__.'/../../../../vendor/doctrine-dbal/lib',
+            'doctrine.common.class_path'    => __DIR__.'/../../vendor/doctrine-common/lib',
+            'doctrine.dbal.class_path'    => __DIR__.'/../../vendor/doctrine-dbal/lib',
             'doctrine.dbal.connection_options' => array(
                 'driver' => 'pdo_sqlite',
                 'path' => ':memory',
@@ -111,8 +111,8 @@ class DoctrineServiceProviderTest extends \PHPUnit_Framework_TestCase
         $app = new Application();
 
         $app->register(new DoctrineServiceProvider(), array(
-            'doctrine.common.class_path'    => __DIR__.'/../../../../vendor/doctrine-common/lib',
-            'doctrine.orm.class_path'    => __DIR__.'/../../../../vendor/doctrine/lib',
+            'doctrine.common.class_path'    => __DIR__.'/../../vendor/doctrine-common/lib',
+            'doctrine.orm.class_path'    => __DIR__.'/../../vendor/doctrine/lib',
             'doctrine.orm' => true
         ));
 
