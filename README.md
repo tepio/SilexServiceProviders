@@ -1,7 +1,7 @@
 SilexExtensions
 ===============
 
-This repository regroups a _large_ set of third-party [Silex Service Providers](http://silex-project.org/doc/extensions.html), codename ``Extensions``.
+This repository regroups a _large_ set of third-party [Silex Service Providers](http://silex-project.org/doc/providers.html), codename ``Extensions``.
 It can also be used as a skeleton to build new self-contained phar service providers.
 
 
