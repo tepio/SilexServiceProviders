@@ -1,7 +1,7 @@
 DoctrineExtension
 ================
 
-The *DoctrineExtension* provides a default `Doctrine2 <http://www.doctrine-project.org>`_ DBAL Connection and an EntityManager.
+The *DoctrineServiceProvider* provides a default `Doctrine2 <http://www.doctrine-project.org>`_ DBAL Connection and an EntityManager.
 
 
 Registering
@@ -9,9 +9,9 @@ Registering
 
 .. code-block:: php
 
-    use Silex\Extension\DoctrineExtension;
+    use Knp\Silex\ServiceProvider\DoctrineServiceProvider;
 
-    $app->register(new DoctrineExtension(), array(
+    $app->register(new DoctrineServiceProvider(), array(
         'doctrine.dbal.connection_options' => array(,
             'driver' => 'pdo_sqlite',
             'path' => ':memory'

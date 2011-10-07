@@ -1,7 +1,7 @@
 DoctrineMongoDBExtension
 ========================
 
-The *DoctrineMongoDBExtension* provides a default `Doctrine2 <http://www.doctrine-project.org>`_ MongoDB ODM Connection and an DocumentManager.
+The *DoctrineMongoDBServiceProvider* provides a default `Doctrine2 <http://www.doctrine-project.org>`_ MongoDB ODM Connection and an DocumentManager.
 
 
 Registering
@@ -9,9 +9,9 @@ Registering
 
 .. code-block:: php
 
-    use Silex\Extension\DoctrineMongoDBExtension;
+    use Knp\Silex\ServiceProvider\DoctrineMongoDBServiceProvider;
 
-    $app->register(new DoctrineMongoDBExtension(), array(
+    $app->register(new DoctrineMongoDBServiceProvider(), array(
         'doctrine.odm.mongodb.connection_options' => array(,
             'database' => 'my_database_name',
             'host'     => 'localhost',
