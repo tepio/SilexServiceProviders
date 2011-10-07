@@ -34,9 +34,6 @@ source_suffix = '.rst'
 # The encoding of source files.
 #source_encoding = 'utf-8'
 
-# The master toctree document.
-master_doc = 'index'
-
 # General information about the project.
 project = u'Silex Doctrine Extensions'
 copyright = u'2011, Florian Klein'
