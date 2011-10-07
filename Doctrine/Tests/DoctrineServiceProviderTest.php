@@ -12,15 +12,15 @@
 namespace Silex\Tests;
 
 use Silex\Application;
-use Silex\Extension\DoctrineExtension;
+use Silex\ServiceProvider\DoctrineServiceProvider;
 
 
 /**
- * DoctrineExtension test cases.
+ * DoctrineServiceProvider test cases.
  *
  * @author Florian Klein <florian.klein@knplabs.com>
  */
-class DoctrineExtensionTest extends \PHPUnit_Framework_TestCase
+class DoctrineServiceProviderTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
@@ -33,7 +33,7 @@ class DoctrineExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $app = new Application();
 
-        $app->register(new DoctrineExtension(), array(
+        $app->register(new DoctrineServiceProvider(), array(
             'doctrine.common.class_path'    => __DIR__.'/../../../../vendor/doctrine-common/lib',
             'doctrine.dbal.class_path'    => __DIR__.'/../../../../vendor/doctrine-dbal/lib',
             'doctrine.orm.class_path'    => __DIR__.'/../../../../vendor/doctrine/lib',
@@ -83,7 +83,7 @@ class DoctrineExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $app = new Application();
 
-        $app->register(new DoctrineExtension(), array(
+        $app->register(new DoctrineServiceProvider(), array(
             'doctrine.common.class_path'    => __DIR__.'/../../../../vendor/doctrine-common/lib',
             'doctrine.dbal.class_path'    => __DIR__.'/../../../../vendor/doctrine-dbal/lib',
             'doctrine.dbal.connection_options' => array(
@@ -110,7 +110,7 @@ class DoctrineExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $app = new Application();
 
-        $app->register(new DoctrineExtension(), array(
+        $app->register(new DoctrineServiceProvider(), array(
             'doctrine.common.class_path'    => __DIR__.'/../../../../vendor/doctrine-common/lib',
             'doctrine.orm.class_path'    => __DIR__.'/../../../../vendor/doctrine/lib',
             'doctrine.orm' => true

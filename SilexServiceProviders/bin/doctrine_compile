@@ -3,7 +3,7 @@
 
 require_once __DIR__.'/../../autoload.php';
 
-use SilexExtensions\Compiler\DoctrineCompiler;
+use SilexServiceProviders\Compiler\DoctrineCompiler;
 
 $compiler = new DoctrineCompiler();
 $compiler->compile();

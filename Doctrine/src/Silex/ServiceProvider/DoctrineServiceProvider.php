@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Silex\Extension;
+namespace Silex\ServiceProvider;
 
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Configuration as DBALConfiguration;
@@ -28,9 +28,9 @@ use Doctrine\Common\Cache\XcacheCache;
 use Doctrine\Common\EventManager;
 
 use Silex\Application;
-use Silex\ExtensionInterface;
+use Silex\ServiceProviderInterface;
 
-class DoctrineExtension implements ExtensionInterface
+class DoctrineServiceProvider implements ServiceProviderInterface
 {
     public function register(Application $app)
     {
@@ -122,7 +122,7 @@ class DoctrineExtension implements ExtensionInterface
                     $cache = new ArrayCache;
                 }
                 $cache->setNamespace("dc2_"); // to avoid collisions
-                
+
                 $config = new ORMConfiguration;
                 $config->setMetadataCacheImpl($cache);
                 $config->setQueryCacheImpl($cache);
@@ -139,12 +139,12 @@ class DoctrineExtension implements ExtensionInterface
                             break;
                         case 'yml':
                             $driver = new YamlDriver((array)$entity['path']);
-                            $driver->setFileExtension('.yml');
+                            $driver->setFileServiceProvider('.yml');
                             $chain->addDriver($driver, $entity['namespace']);
                             break;
                         case 'xml':
                             $driver = new XmlDriver((array)$entity['path'], $entity['namespace']);
-                            $driver->setFileExtension('.xml');
+                            $driver->setFileServiceProvider('.xml');
                             $chain->addDriver($driver, $entity['namespace']);
                             break;
                         default:

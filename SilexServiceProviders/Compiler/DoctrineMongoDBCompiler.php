@@ -1,18 +1,18 @@
 <?php
 
-namespace SilexExtensions\Compiler;
+namespace SilexServiceProviders\Compiler;
 
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpKernel\Kernel;
 
 /**
- * The Compiler class compiles the Doctrine Silex Extension.
+ * Compiler for the Doctrine MongoDB Silex ServiceProvider.
  *
- * @author Florian Klein <florian.klein@free.fr>
+ * @author Justin Hileman <justin@justinhileman.info>
  */
-class DoctrineCompiler
+class DoctrineMongoDBCompiler
 {
-    public function compile($pharFile = 'silex_doctrine_extension.phar')
+    public function compile($pharFile = 'silex_doctrine_mongodb_extension.phar')
     {
         if (file_exists($pharFile)) {
             unlink($pharFile);
@@ -27,7 +27,7 @@ class DoctrineCompiler
         $finder->files()
             ->ignoreVCS(true)
             ->name('*.php')
-            ->in(__DIR__.'/../../Doctrine/src')
+            ->in(__DIR__.'/../../DoctrineMongoDB/src')
         ;
 
         foreach ($finder as $file) {
@@ -47,10 +47,10 @@ class DoctrineCompiler
 
     protected function addFile($phar, $file, $strip = true)
     {
-        $path = str_replace(dirname(dirname(__DIR__)).DIRECTORY_SEPARATOR, '', $file->getRealPath());
+        $path = str_replace(realpath(__DIR__.'/../..').'/', '', $file->getRealPath());
         $content = file_get_contents($file);
         if ($strip) {
-            $content = Kernel::stripComments($content);
+            $content = Kernel::stripComments(file_get_contents($file));
         }
 
         $phar->addFromString($path, $content);
@@ -63,13 +63,13 @@ class DoctrineCompiler
 /*
  * This file is part of the Silex framework.
  *
- * (c) Florian Klein <florian.klein@free.fr>
+ * (c) Fabien Potencier <fabien@symfony.com>
  *
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
 
-require_once __DIR__.'/Doctrine/src/autoload.php';
+require_once __DIR__.'/DoctrineMongoDB/src/autoload.php';
 
 __HALT_COMPILER();
 EOF;

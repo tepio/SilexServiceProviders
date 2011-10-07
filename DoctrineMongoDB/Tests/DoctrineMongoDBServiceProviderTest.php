@@ -12,15 +12,15 @@
 namespace Silex\Tests;
 
 use Silex\Application;
-use Silex\Extension\DoctrineMongoDBExtension;
+use Silex\ServiceProvider\DoctrineMongoDBExtension;
 
 
 /**
- * DoctrineMongoDBExtension test case.
+ * DoctrineMongoDBServiceProvider test case.
  *
  * @author Justin Hileman <justin@justinhileman.info>
  */
-class DoctrineMongoDBExtensionTest extends \PHPUnit_Framework_TestCase
+class DoctrineMongoDBServiceProviderTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
@@ -31,11 +31,11 @@ class DoctrineMongoDBExtensionTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function testRegisterExtension()
+    public function testRegisterServiceProvider()
     {
         $app = new Application();
 
-        $app->register(new DoctrineMongoDBExtension(), array(
+        $app->register(new DoctrineMongoDBServiceProvider(), array(
             'doctrine.common.class_path'      => __DIR__.'/../../../../vendor/doctrine-common/lib',
             'doctrine.mongodb.class_path'     => __DIR__.'/../../../../vendor/doctrine-mongodb/lib',
             'doctrine.odm.mongodb.class_path' => __DIR__.'/../../../../vendor/doctrine-mongodb-odm/lib',

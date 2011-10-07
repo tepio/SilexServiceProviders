@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Silex\Extension;
+namespace Silex\ServiceProvider;
 
 use Silex\Application;
-use Silex\ExtensionInterface;
+use Silex\ServiceProviderInterface;
 
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Cache\ApcCache;
@@ -27,11 +27,11 @@ use Doctrine\ODM\MongoDB\Mapping\Driver\XmlDriver;
 use Doctrine\ODM\MongoDB\Mapping\Driver\YamlDriver;
 
 /**
- * DoctrineMongoDBExtension
+ * DoctrineMongoDBServiceProvider
  *
  * @author Justin Hileman <justin@justinhileman.info>
  */
-class DoctrineMongoDBExtension implements ExtensionInterface
+class DoctrineMongoDBServiceProvider implements ExtensionInterface
 {
     public function register(Application $app)
     {
@@ -39,7 +39,7 @@ class DoctrineMongoDBExtension implements ExtensionInterface
         $this->loadDoctrineMongoDBConfiguration($app);
         $this->loadDoctrineMongoDBConnection($app);
         $this->loadDoctrineMongoDBDocumentManager($app);
-        
+
         foreach (array('Common', 'MongoDB', 'ODM\\MongoDB') as $vendor) {
             $key = sprintf('doctrine.%s.class_path', strtolower(str_replace('\\', '.', $vendor)));
             if (isset($app[$key])) {
@@ -103,12 +103,12 @@ class DoctrineMongoDBExtension implements ExtensionInterface
                         break;
                     case 'yml':
                         $driver = new YamlDriver((array)$document['path']);
-                        $driver->setFileExtension('.yml');
+                        $driver->setFileServiceProvider('.yml');
                         $chain->addDriver($driver, $document['namespace']);
                         break;
                     case 'xml':
                         $driver = new XmlDriver((array)$document['path'], $document['namespace']);
-                        $driver->setFileExtension('.xml');
+                        $driver->setFileServiceProvider('.xml');
                         $chain->addDriver($driver, $document['namespace']);
                         break;
                     default:

@@ -3,7 +3,7 @@
 
 require_once __DIR__.'/../../autoload.php';
 
-use SilexExtensions\Compiler\DoctrineMongoDBCompiler;
+use SilexServiceProviders\Compiler\DoctrineMongoDBCompiler;
 
 $compiler = new DoctrineMongoDBCompiler();
 $compiler->compile();

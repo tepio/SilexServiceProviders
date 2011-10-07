@@ -1,3 +1,3 @@
 <?php
 
-require_once __DIR__.'/Silex/Extension/DoctrineExtension.php';
+require_once __DIR__.'/Silex/ServiceProvider/DoctrineServiceProvider.php';
