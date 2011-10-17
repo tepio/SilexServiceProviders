@@ -12,5 +12,6 @@ Contents
 .. toctree::
    :maxdepth: 2
    
+   annotations
    doctrine
    doctrine_mongodb
