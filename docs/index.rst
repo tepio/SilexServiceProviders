@@ -4,13 +4,13 @@
    contain the root `toctree` directive.
 
 Welcome to Knp Doctrine ServiceProviders documentation!
-===========================================
+=======================================================
 
 Contents
------------
+--------
 
 .. toctree::
-   
+
    annotations
    doctrine
    doctrine_mongodb

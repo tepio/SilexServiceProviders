@@ -1,5 +1,5 @@
-DoctrineMongoDBExtension
-========================
+DoctrineMongoDB
+===============
 
 The *DoctrineMongoDBServiceProvider* provides a default `Doctrine2 <http://www.doctrine-project.org>`_ MongoDB ODM Connection and an DocumentManager.
 
