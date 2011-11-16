@@ -68,6 +68,9 @@ This is an advanced configuration example which replaces the default one:
 
 Default behavior will search annotated ``Documents`` in the ``Document`` directory.
 
+* **doctrine.odm.mongodb.hydrators_dir** (optional): Path to where the
+  doctrine Hydrators are generated. Default is ``cache/doctrine/odm/mongodb/Hydrator/``.
+  
 * **doctrine.odm.mongodb.proxies_dir** (optional): Path to where the
   doctrine Proxies are generated. Default is ``cache/doctrine/odm/mongodb/Proxy``.
 
