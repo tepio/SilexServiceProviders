@@ -12,14 +12,14 @@
     ],
     "require": {
         "php": ">=5.3.2",
-        "doctrine/orm": "2.1.*"
+        "doctrine/orm": "2.1.*",
         "doctrine/mongodb-odm": "*"
     },
     "autoload": {
         "psr-0": {
             "Knp\\Silex": [
                 "Doctrine/src/",
-                "DoctrineMongoDB/src/",
+                "DoctrineMongoDB/src/"
             ]
         }
     }
