@@ -1,0 +1,26 @@
+{
+    "name": "docteurklein/silex-doctrine-service-providers",
+    "description": "A set of doctrine service providers to manage dbal, orm and mongo odm",
+    "keywords": ["microframework", "doctrine2", "orm", "odm"],
+    "homepage": "http://silex-doctrine-extensions.readthedocs.org/en/latest/index.html",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Florian Klein",
+            "email": "florian.klein@free.fr"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "doctrine/orm": "2.1.*"
+        "doctrine/mongodb-odm": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Knp\\Silex": [
+                "Doctrine/src/",
+                "DoctrineMongoDB/src/",
+            ]
+        }
+    }
+}
