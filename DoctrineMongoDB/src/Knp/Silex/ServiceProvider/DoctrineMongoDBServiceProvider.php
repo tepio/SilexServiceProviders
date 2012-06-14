@@ -48,6 +48,10 @@ class DoctrineMongoDBServiceProvider implements ServiceProviderInterface
         }
     }
 
+    public function boot(Application $app)
+    {
+    }
+
     public function setDoctrineMongoDBDefaults(Application $app)
     {
         // default connection options
