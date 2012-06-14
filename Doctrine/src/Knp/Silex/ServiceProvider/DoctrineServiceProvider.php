@@ -52,6 +52,10 @@ class DoctrineServiceProvider implements ServiceProviderInterface
         }
     }
 
+    public function boot(Application $app)
+    {
+    }
+
     private function loadDoctrineDbal(Application $app)
     {
         $app['doctrine.dbal.event_manager'] = $app->share(function() {
