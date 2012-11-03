@@ -12,6 +12,8 @@ If you have manually registered the autoloading of Doctrine files, you can put t
 Registering
 -----------
 
+With Doctrine ORM you need to use:
+
 .. code-block:: php
 
     use Doctrine\Common\Annotations\AnnotationRegistry;
@@ -21,4 +23,26 @@ Registering
         return class_exists($class, false);
     });
     AnnotationRegistry::registerFile(__DIR__.'/vendor/doctrine_orm/lib/Doctrine/ORM/Mapping/Driver/DoctrineAnnotations.php');
+
+
+With Doctrine ODM (MongoDB) you need to use:
+
+.. code-block:: php
+
+    use Doctrine\Common\Annotations\AnnotationRegistry;
+
+    AnnotationRegistry::registerLoader(function($class) use ($loader) {
+    $loader->loadClass($class);
+        return class_exists($class, false);
+    });
+    AnnotationRegistry::registerFile(__DIR__.'/vendor/doctrine/common/lib/Doctrine/Common/Annotations/AnnotationRegistry.php');
+
+
+Maybe you must change the file location to respect folder structure in your project.
+
+With composer you need to get $loader with:
+
+.. code-block:: php
+
+    $loader = ComposerAutoloaderInit::getLoader();
 
