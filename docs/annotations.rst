@@ -1,7 +1,7 @@
 Using annotations for Doctrine metadata
 =======================================
 
-Doctrine can read Enitiy/Document mapping metadata from docBlocks. You'll need then some extra configuration:
+Doctrine can read Entity/Document mapping metadata from docBlocks. You'll need then some extra configuration:
 
 Put this somewhere in your bootstrap file, **after** having loaded your ``Doctrine*ServiceProvider``.
 The order is important because of the automatic registration of doctrine classes autoloading.
