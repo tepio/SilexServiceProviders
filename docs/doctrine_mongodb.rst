@@ -67,7 +67,16 @@ Default behavior will search annotated ``Documents`` in the ``Document`` directo
 * **doctrine.odm.mongodb.proxies_namespace** (optional): Namespace of generated
   doctrine Proxies. Default is ``DoctrineMongoDBProxy``.
 
-* **doctrine.orm.auto_generate_proxies** (optional): Tell Doctrine wether it should generate proxies automatically. Default is ``true``.
+* **doctrine.odm.mongodb.auto_generate_proxies** (optional): Tell Doctrine wether it should generate proxies automatically. Default is ``true``.
+
+* **doctrine.odm.mongodb.hydrators_dir** (optional): Path to where the
+  doctrine hydrators are generated. Default is ``cache/doctrine/odm/mongodb/Hydrator``.
+
+* **doctrine.odm.mongodb.hydrators_namespace** (optional): Namespace of generated
+  doctrine Hydrators. Default is ``DoctrineMongoDBHydrator``.
+
+* **doctrine.odm.mongodb.metadata_cache** (optional): Cache to use for metadata
+  If not 'apc', then ArrayCache is used.
 
 * **doctrine.odm.mongodb.class_path** (optional): Path to where the
   Doctrine\\ODM\\MongoDB library is located.
