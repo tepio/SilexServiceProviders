@@ -15,8 +15,6 @@ use Silex\Application;
 use Silex\ServiceProviderInterface;
 
 use Doctrine\Common\Annotations\AnnotationReader;
-use Doctrine\Common\Cache\ApcCache;
-use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\Common\EventManager;
 use Doctrine\MongoDB\Connection;
 use Doctrine\ODM\MongoDB\Configuration;
@@ -71,7 +69,7 @@ class DoctrineMongoDBServiceProvider implements ServiceProviderInterface
             'auto_generate_proxies' => true,
             'hydrators_dir'         => 'cache/doctrine/odm/mongodb/Hydrator',
             'hydrators_namespace'   => 'DoctrineMongoDBHydrator',
-            'metadata_cache'        => 'apc',
+            'metadata_cache'        => 'ApcCache',
         );
 
         foreach($defaults as $key => $value) {
@@ -86,10 +84,12 @@ class DoctrineMongoDBServiceProvider implements ServiceProviderInterface
         $app['doctrine.odm.mongodb.configuration'] = $app->share(function() use($app) {
             $config = new Configuration;
 
-            if ($app['doctrine.odm.mongodb.metadata_cache'] == 'apc') {
-                $cache = new ApcCache;
-            } else {
-                $cache = new ArrayCache;
+            $cacheClass = '\\Doctrine\\Common\\Cache\\' . $app['doctrine.odm.mongodb.metadata_cache'];
+            if (class_exists($cacheClass)) {
+                $cache = new $cacheClass;
+            }
+            else {
+                $cache = new \Doctrine\Common\Cache\ArrayCache();
             }
             $config->setMetadataCacheImpl($cache);
 
