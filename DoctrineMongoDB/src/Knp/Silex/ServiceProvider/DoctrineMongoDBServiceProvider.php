@@ -21,7 +21,7 @@ use Doctrine\Common\EventManager;
 use Doctrine\MongoDB\Connection;
 use Doctrine\ODM\MongoDB\Configuration;
 use Doctrine\ODM\MongoDB\DocumentManager;
-use Doctrine\ODM\MongoDB\Mapping\Driver\DriverChain;
+use Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain;
 use Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver;
 use Doctrine\ODM\MongoDB\Mapping\Driver\XmlDriver;
 use Doctrine\ODM\MongoDB\Mapping\Driver\YamlDriver;
@@ -97,7 +97,7 @@ class DoctrineMongoDBServiceProvider implements ServiceProviderInterface
                 $config->setDefaultDB($app['doctrine.odm.mongodb.connection_options']['database']);
             }
 
-            $chain = new DriverChain;
+            $chain = new MappingDriverChain;
             foreach((array)$app['doctrine.odm.mongodb.documents'] as $document) {
                 switch($document['type']) {
                     case 'annotation':
